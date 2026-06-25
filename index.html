@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serenova Spa — Yogyakarta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --midnight: #0D1B1E;
+    --midnight-light: #152225;
+    --ivory: #F5EFE6;
+    --ivory-dark: #EDE5D8;
+    --gold: #C9A84C;
+    --gold-light: #E2C97E;
+    --sage: #8BA888;
+    --blush: #D4A5A0;
+    --text-dark: #1A2C30;
+    --text-mid: #4A5E62;
+    --text-light: #8A9FA3;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ivory);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 60px;
+    transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(13,27,30,0.92);
+    backdrop-filter: blur(12px);
+    padding: 16px 60px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--ivory);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,239,230,0.75);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--midnight); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--midnight);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 40%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(139,168,136,0.08) 0%, transparent 50%),
+      linear-gradient(160deg, #0D1B1E 0%, #1A3038 50%, #0D1B1E 100%);
+  }
+  /* Decorative botanical lines */
+  .hero-deco {
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 48%;
+    overflow: hidden;
+  }
+  .hero-deco::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 900'%3E%3Cpath d='M300 900 Q280 750 320 600 Q360 450 280 300 Q200 150 300 0' stroke='%23C9A84C' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3Cpath d='M350 900 Q330 720 380 560 Q430 400 340 240 Q250 80 360 0' stroke='%23C9A84C' stroke-width='0.3' fill='none' opacity='0.2'/%3E%3Cpath d='M300 600 Q240 560 180 580' stroke='%238BA888' stroke-width='0.5' fill='none' opacity='0.4'/%3E%3Cpath d='M320 500 Q380 460 440 490' stroke='%238BA888' stroke-width='0.4' fill='none' opacity='0.3'/%3E%3Cpath d='M280 400 Q210 360 160 390' stroke='%238BA888' stroke-width='0.4' fill='none' opacity='0.3'/%3E%3Ccircle cx='250' cy='180' r='2' fill='%23C9A84C' opacity='0.5'/%3E%3Ccircle cx='380' cy='320' r='1.5' fill='%23C9A84C' opacity='0.4'/%3E%3Ccircle cx='200' cy='450' r='1' fill='%238BA888' opacity='0.5'/%3E%3C/svg%3E") center/cover no-repeat;
+  }
+
+  /* Floating photo frame */
+  .hero-photo-wrap {
+    position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+    width: 38%; max-width: 480px;
+  }
+  .hero-photo-frame {
+    position: relative;
+    aspect-ratio: 3/4;
+    border: 1px solid rgba(201,168,76,0.3);
+    overflow: hidden;
+  }
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute; inset: 12px;
+    border: 0.5px solid rgba(201,168,76,0.2);
+    z-index: 2; pointer-events: none;
+  }
+  .hero-photo-bg {
+    position: absolute; inset: 0;
+    background: 
+      linear-gradient(180deg, rgba(13,27,30,0.2) 0%, rgba(13,27,30,0.4) 100%),
+      linear-gradient(135deg, #2D4A4E 0%, #1A3038 30%, #2C3E35 60%, #1E2D28 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  /* Spa image illustration */
+  .hero-photo-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(circle at 50% 35%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Cellipse cx='200' cy='250' rx='120' ry='80' fill='%23C9A84C' opacity='0.06'/%3E%3Cpath d='M120 250 Q200 180 280 250 Q200 320 120 250Z' fill='%238BA888' opacity='0.08'/%3E%3C/svg%3E") center/cover;
+  }
+  .hero-photo-label {
+    position: absolute; bottom: -1px; left: -1px;
+    background: var(--gold);
+    color: var(--midnight);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+  }
+  .hero-photo-corner {
+    position: absolute; top: -10px; right: -10px;
+    width: 80px; height: 80px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 8% 0 8%;
+    max-width: 580px;
+  }
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 32px; height: 1px;
+    background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ivory);
+    margin-bottom: 28px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: rgba(245,239,230,0.6);
+    margin-bottom: 44px;
+    font-weight: 300;
+    max-width: 420px;
+  }
+  .hero-actions { display: flex; align-items: center; gap: 28px; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--midnight);
+    padding: 16px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-ghost {
+    color: rgba(245,239,230,0.65);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+    transition: color 0.3s;
+  }
+  .btn-ghost:hover { color: var(--ivory); }
+  .btn-ghost .arrow {
+    width: 28px; height: 1px; background: currentColor;
+    position: relative; transition: width 0.3s;
+  }
+  .btn-ghost:hover .arrow { width: 40px; }
+  .btn-ghost .arrow::after {
+    content: ''; position: absolute; right: 0; top: -3px;
+    width: 6px; height: 6px;
+    border-right: 1px solid currentColor;
+    border-top: 1px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  .hero-stats {
+    position: absolute; bottom: 48px; left: 8%;
+    display: flex; gap: 48px;
+    z-index: 2;
+  }
+  .stat-item {}
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--ivory);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--gold); font-size: 1.2rem; }
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,239,230,0.4);
+    margin-top: 4px;
+  }
+
+  .scroll-indicator {
+    position: absolute; bottom: 40px; right: 8%;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(245,239,230,0.35);
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    z-index: 2;
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* ── DIVIDER / MARQUEE ── */
+  .marquee-strip {
+    background: var(--gold);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-flex; gap: 48px;
+    animation: marquee 22s linear infinite;
+  }
+  .marquee-inner span {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--midnight);
+    font-weight: 500;
+  }
+  .marquee-dot {
+    color: rgba(13,27,30,0.4);
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── INTRO SECTION ── */
+  .intro {
+    background: var(--ivory);
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .intro-visual {
+    position: relative;
+  }
+  .intro-img-main {
+    width: 100%; aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #2D4A4E, #1E3530, #2C4A42);
+    position: relative;
+    overflow: hidden;
+  }
+  .intro-img-main::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(circle at 60% 40%, rgba(201,168,76,0.1), transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Ccircle cx='200' cy='180' r='80' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.3'/%3E%3Ccircle cx='200' cy='180' r='120' fill='none' stroke='%23C9A84C' stroke-width='0.3' opacity='0.15'/%3E%3Cpath d='M100 350 Q200 300 300 350' stroke='%238BA888' stroke-width='1' fill='none' opacity='0.3'/%3E%3Cellipse cx='200' cy='320' rx='60' ry='20' fill='%23C9A84C' opacity='0.08'/%3E%3C/svg%3E") center/cover;
+  }
+  .intro-img-accent {
+    position: absolute;
+    bottom: -32px; right: -32px;
+    width: 55%;
+    aspect-ratio: 1;
+    background: var(--midnight);
+    border: 6px solid var(--ivory);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px;
+  }
+  .intro-img-accent-inner {
+    text-align: center;
+    padding: 20px;
+  }
+  .accent-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .accent-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,239,230,0.5);
+    margin-top: 6px;
+    line-height: 1.6;
+  }
+  .intro-text {}
+  .section-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: block; width: 28px; height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+  }
+  .section-title em { font-style: italic; color: var(--sage); }
+  .section-body {
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: var(--text-mid);
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  .intro-feature-list {
+    margin-top: 32px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .feature-item {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .feature-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 0.9rem;
+    margin-top: 2px;
+  }
+  .feature-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    letter-spacing: 0.02em;
+    margin-bottom: 3px;
+  }
+  .feature-desc {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* ── SERVICES ── */
+  .services {
+    background: var(--midnight);
+    padding: 100px 8%;
+  }
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px;
+  }
+  .services-header .section-title { color: var(--ivory); margin-bottom: 0; }
+  .services-header .section-eyebrow { color: var(--gold); }
+  .view-all-link {
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+    transition: gap 0.3s;
+  }
+  .view-all-link:hover { gap: 16px; }
+  .view-all-link::after {
+    content: '→';
+    font-size: 0.9rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    cursor: pointer;
+    group: true;
+  }
+  .service-card-bg {
+    position: absolute; inset: 0;
+    transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .service-card:hover .service-card-bg { transform: scale(1.04); }
+  .sc-bg-1 {
+    background: linear-gradient(160deg, #2D4A4E 0%, #1A3038 40%, #243830 100%);
+  }
+  .sc-bg-2 {
+    background: linear-gradient(160deg, #3D3028 0%, #2A1E18 40%, #3A2820 100%);
+  }
+  .sc-bg-3 {
+    background: linear-gradient(160deg, #2A3230 0%, #1A2825 40%, #243030 100%);
+  }
+  .service-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(0deg, rgba(13,27,30,0.85) 0%, rgba(13,27,30,0.1) 60%, transparent 100%);
+    transition: background 0.4s;
+  }
+  .service-card:hover .service-card-overlay {
+    background: linear-gradient(0deg, rgba(13,27,30,0.9) 0%, rgba(13,27,30,0.3) 70%, rgba(13,27,30,0.1) 100%);
+  }
+  .service-card-deco {
+    position: absolute; inset: 0;
+    opacity: 0.15;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .service-card-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 36px 32px;
+  }
+  .service-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--ivory);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .service-duration {
+    font-size: 0.72rem;
+    color: rgba(245,239,230,0.45);
+    letter-spacing: 0.1em;
+  }
+  .service-price {
+    position: absolute; top: 28px; right: 28px;
+    text-align: right;
+  }
+  .price-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,239,230,0.35);
+    margin-bottom: 2px;
+  }
+  .price-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--gold);
+  }
+  .service-card-hover-content {
+    position: absolute; bottom: 100px; left: 32px; right: 32px;
+    opacity: 0; transform: translateY(10px);
+    transition: all 0.4s;
+  }
+  .service-card:hover .service-card-hover-content {
+    opacity: 1; transform: translateY(0);
+  }
+  .service-desc-preview {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: rgba(245,239,230,0.6);
+  }
+
+  /* ── EXPERIENCE SECTION ── */
+  .experience {
+    background: var(--ivory);
+    padding: 100px 8%;
+  }
+  .exp-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .exp-text {}
+  .exp-steps {
+    display: flex; flex-direction: column; gap: 0;
+    margin-top: 40px;
+  }
+  .exp-step {
+    display: flex; gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    position: relative;
+  }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--ivory-dark);
+    line-height: 1;
+    min-width: 48px;
+    padding-top: 4px;
+  }
+  .step-info {}
+  .step-title {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .step-desc {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+  .exp-visual {
+    position: relative;
+  }
+  .exp-video-frame {
+    width: 100%; aspect-ratio: 9/11;
+    background: linear-gradient(135deg, #1E3530 0%, #2D4A4E 50%, #1A3038 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .exp-video-frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.12), transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 480'%3E%3Ccircle cx='200' cy='200' r='100' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.25'/%3E%3Ccircle cx='200' cy='200' r='70' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.2'/%3E%3Ccircle cx='200' cy='200' r='40' fill='%23C9A84C' opacity='0.06'/%3E%3Cpath d='M80 380 Q200 340 320 380' stroke='%238BA888' stroke-width='1' fill='none' opacity='0.3'/%3E%3Cpath d='M120 360 Q200 320 280 360' stroke='%238BA888' stroke-width='0.7' fill='none' opacity='0.2'/%3E%3C/svg%3E") center/cover;
+  }
+  .play-button {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 72px; height: 72px;
+    border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.3s;
+    z-index: 2;
+  }
+  .play-button:hover { border-color: var(--gold); transform: translate(-50%, -50%) scale(1.08); }
+  .play-button::after {
+    content: '';
+    width: 0; height: 0;
+    border-left: 22px solid var(--gold);
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    margin-left: 5px;
+  }
+  .exp-quote {
+    position: absolute;
+    bottom: -40px; left: -40px;
+    background: var(--midnight);
+    padding: 28px 32px;
+    width: 75%;
+  }
+  .exp-quote-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(245,239,230,0.75);
+    margin-bottom: 12px;
+  }
+  .exp-quote-author {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    background: var(--ivory-dark);
+    padding: 100px 8%;
+  }
+  .testi-header { text-align: center; margin-bottom: 60px; }
+  .testi-header .section-eyebrow { justify-content: center; }
+  .testi-header .section-eyebrow::before { display: none; }
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .testi-card {
+    background: var(--ivory);
+    padding: 36px;
+    position: relative;
+  }
+  .testi-stars {
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+  .testi-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    line-height: 1.75;
+    color: var(--text-mid);
+    margin-bottom: 24px;
+  }
+  .testi-author {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--midnight-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .testi-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+  }
+  .testi-meta {
+    font-size: 0.7rem;
+    color: var(--text-light);
+  }
+  .testi-quote-mark {
+    position: absolute; top: 28px; right: 36px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: rgba(201,168,76,0.12);
+    font-weight: 300;
+  }
+
+  /* ── PROMO / CTA BANNER ── */
+  .cta-banner {
+    background: var(--midnight);
+    padding: 80px 8%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 40%;
+    background: radial-gradient(ellipse at right, rgba(201,168,76,0.08), transparent 70%);
+  }
+  .cta-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300;
+    color: var(--ivory);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .cta-sub {
+    font-size: 0.85rem;
+    color: rgba(245,239,230,0.45);
+    line-height: 1.7;
+  }
+  .cta-actions { display: flex; flex-direction: column; gap: 14px; align-items: flex-end; }
+  .cta-phone {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .cta-phone-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,239,230,0.3);
+    text-align: right;
+    margin-bottom: 4px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080F11;
+    padding: 64px 8% 40px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 32px;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--ivory);
+    margin-bottom: 16px;
+    display: block;
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-tagline {
+    font-size: 0.78rem;
+    line-height: 1.75;
+    color: rgba(245,239,230,0.35);
+    font-weight: 300;
+    max-width: 240px;
+  }
+  .footer-socials {
+    display: flex; gap: 12px; margin-top: 24px;
+  }
+  .social-btn {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(245,239,230,0.4);
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-col-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .footer-links a {
+    font-size: 0.8rem;
+    color: rgba(245,239,230,0.35);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+  .footer-links a:hover { color: var(--ivory); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(245,239,230,0.2);
+  }
+  .footer-copy span { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* gold line animation */
+  .gold-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    width: 0; transition: width 1.2s ease;
+    margin: 32px 0;
+  }
+  .gold-line.visible { width: 100%; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    nav.scrolled { padding: 14px 24px; }
+    .nav-links { display: none; }
+    .hero-content { padding: 0 6%; max-width: 100%; }
+    .hero-photo-wrap { display: none; }
+    .hero-title { font-size: 2.6rem; }
+    .hero-stats { left: 6%; }
+    .intro { grid-template-columns: 1fr; gap: 40px; padding: 60px 6%; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { aspect-ratio: 4/3; }
+    .exp-inner { grid-template-columns: 1fr; gap: 60px; padding-bottom: 60px; }
+    .exp-quote { position: static; width: 100%; left: auto; bottom: auto; margin-top: 20px; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .cta-banner { grid-template-columns: 1fr; gap: 32px; }
+    .cta-actions { align-items: flex-start; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .services { padding: 60px 6%; }
+    .experience { padding: 60px 6%; }
+    .testimonials { padding: 60px 6%; }
+    .intro-img-accent { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Sere<span>nova</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Layanan</a></li>
+    <li><a href="#experience">Pengalaman</a></li>
+    <li><a href="#testimonials">Ulasan</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Reservasi</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-deco"></div>
+
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-frame">
+      <div class="hero-photo-bg"></div>
+      <div class="hero-photo-corner"></div>
+      <div class="hero-photo-label">Est. 2018 · Yogyakarta</div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Premium Spa & Wellness</div>
+    <h1 class="hero-title">
+      Temukan<br>
+      <em>Kedamaian</em><br>
+      Sejati
+    </h1>
+    <p class="hero-desc">
+      Ritual penyembuhan yang terinspirasi dari kebijaksanaan tradisional Jawa, 
+      menghadirkan harmoni antara tubuh, pikiran, dan jiwa di tengah Yogyakarta.
+    </p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary">Pesan Sekarang</a>
+      <a href="#services" class="btn-ghost">
+        <span class="arrow"></span>
+        Lihat Layanan
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">12<span>+</span></div>
+      <div class="stat-label">Tahun Pengalaman</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4.9<span>★</span></div>
+      <div class="stat-label">Rating Klien</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8K<span>+</span></div>
+      <div class="stat-label">Tamu Puas</div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Reflexology</span><span class="marquee-dot">·</span>
+    <span>Traditional Javanese Massage</span><span class="marquee-dot">·</span>
+    <span>Hot Stone Therapy</span><span class="marquee-dot">·</span>
+    <span>Aromatherapy</span><span class="marquee-dot">·</span>
+    <span>Couple Treatment</span><span class="marquee-dot">·</span>
+    <span>Body Scrub</span><span class="marquee-dot">·</span>
+    <span>Reflexology</span><span class="marquee-dot">·</span>
+    <span>Traditional Javanese Massage</span><span class="marquee-dot">·</span>
+    <span>Hot Stone Therapy</span><span class="marquee-dot">·</span>
+    <span>Aromatherapy</span><span class="marquee-dot">·</span>
+    <span>Couple Treatment</span><span class="marquee-dot">·</span>
+    <span>Body Scrub</span><span class="marquee-dot">·</span>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-visual fade-up">
+    <div class="intro-img-main"></div>
+    <div class="intro-img-accent">
+      <div class="intro-img-accent-inner">
+        <div class="accent-num">100%</div>
+        <div class="accent-text">Bahan Alami<br>Pilihan</div>
+      </div>
+    </div>
+  </div>
+  <div class="intro-text fade-up">
+    <div class="section-eyebrow">Tentang Kami</div>
+    <h2 class="section-title">Warisan Penyembuhan<br><em>Tanah Jawa</em></h2>
+    <div class="gold-line"></div>
+    <p class="section-body">
+      Serenova Spa lahir dari keyakinan bahwa kesejahteraan sejati adalah perpaduan 
+      antara tradisi leluhur dan sentuhan modern. Setiap sesi dirancang sebagai 
+      perjalanan mendalam — bukan sekadar relaksasi, melainkan pemulihan total.
+    </p>
+    <p class="section-body">
+      Terapis bersertifikat kami telah mendalami teknik pijat tradisional Jawa 
+      selama bertahun-tahun, memadukan kearifan lokal dengan metode terapeutik kontemporer.
+    </p>
+    <div class="intro-feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">✦</div>
+        <div>
+          <div class="feature-label">Terapis Bersertifikat</div>
+          <div class="feature-desc">Semua terapis telah melalui pelatihan intensif dan memiliki sertifikasi resmi</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">✦</div>
+        <div>
+          <div class="feature-label">Produk Premium Lokal</div>
+          <div class="feature-desc">Menggunakan minyak esensial dan bahan alami pilihan dari Jawa dan Bali</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">✦</div>
+        <div>
+          <div class="feature-label">Ruang Privat Eksklusif</div>
+          <div class="feature-desc">Setiap sesi berlangsung di ruangan privat dengan suasana yang tenang dan mewah</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-eyebrow">Menu Perawatan</div>
+      <h2 class="section-title" style="color:var(--ivory)">Pilih <em style="color:var(--gold-light)">Ritual</em> Anda</h2>
+    </div>
+    <a href="#" class="view-all-link">Semua Layanan</a>
+  </div>
+
+  <div class="services-grid">
+    <!-- Card 1 -->
+    <div class="service-card fade-up">
+      <div class="service-card-bg sc-bg-1">
+        <div class="service-card-deco">
+          <svg width="200" height="200" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="55" fill="none" stroke="#C9A84C" stroke-width="0.3"/>
+            <circle cx="100" cy="100" r="30" fill="#C9A84C" opacity="0.06"/>
+          </svg>
+        </div>
+      </div>
+      <div class="service-card-overlay"></div>
+      <div class="service-price">
+        <div class="price-label">Mulai dari</div>
+        <div class="price-value">150K</div>
+      </div>
+      <div class="service-card-hover-content">
+        <p class="service-desc-preview">Teknik pijat tradisional Jawa yang menargetkan titik-titik energi untuk melepaskan ketegangan mendalam.</p>
+      </div>
+      <div class="service-card-content">
+        <div class="service-tag">Signature</div>
+        <div class="service-name">Pijat Tradisional<br>Jawa</div>
+        <div class="service-duration">60 / 90 / 120 menit</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="service-card fade-up">
+      <div class="service-card-bg sc-bg-2">
+        <div class="service-card-deco">
+          <svg width="200" height="200" viewBox="0 0 200 200">
+            <path d="M100 20 L120 80 L180 80 L130 120 L150 180 L100 145 L50 180 L70 120 L20 80 L80 80 Z" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+            <path d="M100 50 L113 88 L153 88 L122 110 L135 148 L100 126 L65 148 L78 110 L47 88 L87 88 Z" fill="#C9A84C" opacity="0.04"/>
+          </svg>
+        </div>
+      </div>
+      <div class="service-card-overlay"></div>
+      <div class="service-price">
+        <div class="price-label">Mulai dari</div>
+        <div class="price-value">200K</div>
+      </div>
+      <div class="service-card-hover-content">
+        <p class="service-desc-preview">Batu vulkanik dipanaskan sempurna untuk merelaksasi otot, melancarkan sirkulasi darah dan energi.</p>
+      </div>
+      <div class="service-card-content">
+        <div class="service-tag">Premium</div>
+        <div class="service-name">Hot Stone<br>Therapy</div>
+        <div class="service-duration">90 / 120 menit</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="service-card fade-up">
+      <div class="service-card-bg sc-bg-3">
+        <div class="service-card-deco">
+          <svg width="200" height="200" viewBox="0 0 200 200">
+            <ellipse cx="100" cy="100" rx="75" ry="45" fill="none" stroke="#8BA888" stroke-width="0.5"/>
+            <ellipse cx="100" cy="100" rx="50" ry="30" fill="none" stroke="#8BA888" stroke-width="0.3"/>
+            <ellipse cx="100" cy="100" rx="25" ry="15" fill="#8BA888" opacity="0.08"/>
+            <path d="M40 100 Q100 60 160 100" stroke="#C9A84C" stroke-width="0.4" fill="none" opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="service-card-overlay"></div>
+      <div class="service-price">
+        <div class="price-label">Mulai dari</div>
+        <div class="price-value">250K</div>
+      </div>
+      <div class="service-card-hover-content">
+        <p class="service-desc-preview">Pengalaman bersama pasangan dalam suite privat — perawatan serentak untuk dua jiwa yang harmonis.</p>
+      </div>
+      <div class="service-card-content">
+        <div class="service-tag">Eksklusif</div>
+        <div class="service-name">Couple<br>Treatment</div>
+        <div class="service-duration">90 / 120 menit</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional services row -->
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:2px;">
+    <div style="background:rgba(255,255,255,0.03); padding:28px 32px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(201,168,76,0.1);">
+      <div>
+        <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Perawatan</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--ivory);">Aromatherapy Massage</div>
+        <div style="font-size:0.7rem;color:rgba(245,239,230,0.35);margin-top:3px;">60 / 90 menit</div>
+      </div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);">130K</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.03); padding:28px 32px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(201,168,76,0.1);">
+      <div>
+        <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Perawatan</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--ivory);">Reflexology & Totok Wajah</div>
+        <div style="font-size:0.7rem;color:rgba(245,239,230,0.35);margin-top:3px;">60 menit</div>
+      </div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);">100K</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.03); padding:28px 32px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(201,168,76,0.1);">
+      <div>
+        <div style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Perawatan</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--ivory);">Lulur & Body Scrub</div>
+        <div style="font-size:0.7rem;color:rgba(245,239,230,0.35);margin-top:3px;">90 menit</div>
+      </div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);">175K</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="exp-inner">
+    <div class="exp-text fade-up">
+      <div class="section-eyebrow">Pengalaman Kami</div>
+      <h2 class="section-title">Setiap Kunjungan,<br>Sebuah <em>Ritual</em></h2>
+      <div class="gold-line"></div>
+      <p class="section-body">
+        Kami percaya bahwa penyembuhan sejati dimulai dari detail terkecil — 
+        dari aroma ruangan hingga suhu air, dari musik pengiring hingga sentuhan pertama terapis.
+      </p>
+      <div class="exp-steps">
+        <div class="exp-step">
+          <div class="step-num">01</div>
+          <div class="step-info">
+            <div class="step-title">Konsultasi Awal</div>
+            <div class="step-desc">Terapis kami memahami kebutuhan dan kondisi tubuh Anda sebelum memulai sesi</div>
+          </div>
+        </div>
+        <div class="exp-step">
+          <div class="step-num">02</div>
+          <div class="step-info">
+            <div class="step-title">Persiapan Ritual</div>
+            <div class="step-desc">Minyak esensial dipilih sesuai kebutuhan, ruangan disiapkan dengan aromaterapi alami</div>
+          </div>
+        </div>
+        <div class="exp-step">
+          <div class="step-num">03</div>
+          <div class="step-info">
+            <div class="step-title">Sesi Perawatan</div>
+            <div class="step-desc">Perawatan penuh dengan teknik terstandar dan sentuhan personal dari terapis berpengalaman</div>
+          </div>
+        </div>
+        <div class="exp-step">
+          <div class="step-num">04</div>
+          <div class="step-info">
+            <div class="step-title">Recovery & Teh Herbal</div>
+            <div class="step-desc">Nikmati momen ketenangan dengan teh jahe atau wedang uwuh pilihan kami</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="exp-visual fade-up">
+      <div class="exp-video-frame">
+        <div class="play-button"></div>
+      </div>
+      <div class="exp-quote">
+        <div class="exp-quote-text">"Tubuh adalah kuil. Yang kita lakukan terhadapnya tercermin pada jiwa kita."</div>
+        <div class="exp-quote-author">— Filosofi Serenova</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="testi-header fade-up">
+    <div class="section-eyebrow">Ulasan Tamu</div>
+    <h2 class="section-title">Yang Mereka <em>Rasakan</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="testi-quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Pengalaman terbaik yang pernah saya rasakan di Yogyakarta. Terapisnya sangat profesional, suasananya benar-benar membuat saya lupa semua tekanan pekerjaan."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Anindya R.</div>
+          <div class="testi-meta">Jakarta · Couple Treatment</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Sudah berkunjung 5 kali dan selalu merekomendasikan ke teman. Hot stone therapy-nya luar biasa, nyeri punggung saya hilang setelah satu sesi."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">B</div>
+        <div>
+          <div class="testi-name">Bima Saktya</div>
+          <div class="testi-meta">Surabaya · Hot Stone Therapy</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-quote-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Datang sebagai hadiah ulang tahun suami, pulang dengan hati yang penuh. Pelayanannya sangat personal dan hangat — bukan sekadar spa biasa."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">D</div>
+        <div>
+          <div class="testi-name">Dewi Kusuma</div>
+          <div class="testi-meta">Yogyakarta · Aromatherapy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" id="booking">
+  <div>
+    <div class="cta-eyebrow">Reservasi Sekarang</div>
+    <h2 class="cta-title">Mulai Perjalanan<br>Menuju Keseimbangan</h2>
+    <p class="cta-sub">Tersedia untuk kunjungan langsung, reservasi telepon, maupun WhatsApp. Slot terbatas setiap harinya untuk memastikan kualitas layanan terbaik.</p>
+  </div>
+  <div class="cta-actions">
+    <div>
+      <div class="cta-phone-label">Hubungi via WhatsApp</div>
+      <a href="https://wa.me/6281234567890" class="cta-phone">+62 812-3456-7890</a>
+    </div>
+    <a href="https://wa.me/6281234567890" class="btn-primary" style="margin-top:8px;">Pesan via WhatsApp</a>
+    <div style="font-size:0.65rem;letter-spacing:0.12em;color:rgba(245,239,230,0.2);text-transform:uppercase;">
+      Jl. Malioboro No. 99, Yogyakarta
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">Sere<span>nova</span></a>
+      <p class="footer-tagline">
+        Sanctuary of healing and renewal — 
+        menghadirkan kedamaian otentik melalui 
+        tradisi penyembuhan tanah Jawa.
+      </p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">ig</a>
+        <a href="#" class="social-btn">tw</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Layanan</div>
+      <ul class="footer-links">
+        <li><a href="#">Pijat Tradisional Jawa</a></li>
+        <li><a href="#">Hot Stone Therapy</a></li>
+        <li><a href="#">Aromatherapy</a></li>
+        <li><a href="#">Couple Treatment</a></li>
+        <li><a href="#">Reflexology</a></li>
+        <li><a href="#">Lulur & Body Scrub</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Informasi</div>
+      <ul class="footer-links">
+        <li><a href="#">Tentang Kami</a></li>
+        <li><a href="#">Paket & Harga</a></li>
+        <li><a href="#">Gift Voucher</a></li>
+        <li><a href="#">Membership</a></li>
+        <li><a href="#">Kebijakan</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Jam Operasional</div>
+      <ul class="footer-links">
+        <li><a href="#" style="pointer-events:none">Senin – Jumat</a></li>
+        <li><a href="#" style="pointer-events:none;color:rgba(245,239,230,0.55)">09:00 – 21:00</a></li>
+        <li><a href="#" style="pointer-events:none;margin-top:8px;">Sabtu – Minggu</a></li>
+        <li><a href="#" style="pointer-events:none;color:rgba(245,239,230,0.55)">08:00 – 22:00</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 <span>Serenova Spa</span>. All rights reserved.</p>
+    <p class="footer-copy">Designed with care · Yogyakarta, Indonesia</p>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Fade-up + gold line observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, entry.target.dataset.delay || 0);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    el.dataset.delay = (i % 3) * 120;
+    observer.observe(el);
+  });
+  document.querySelectorAll('.gold-line').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
