@@ -1,0 +1,2653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Axella Home Service SPA — Professional home massage & spa service." />
+  <title>Axella Home Service SPA — Your Truly Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+/* ============================================================
+   SERENE SPA — Main Stylesheet
+   Author: Studio Craft
+   Version: 1.0.0
+   ============================================================ */
+
+/* ─── 1. CSS CUSTOM PROPERTIES ─────────────────────────────── */
+:root {
+  /* Color Palette */
+  --clr-forest:       #0D2B22;
+  --clr-forest-mid:   #153825;
+  --clr-forest-light: #1E4D34;
+  --clr-sage:         #4A7C5F;
+  --clr-sage-light:   #7AAD8E;
+  --clr-gold:         #C8973A;
+  --clr-gold-light:   #E2B86A;
+  --clr-gold-pale:    #F0D9A8;
+  --clr-ivory:        #F5F0E8;
+  --clr-white:        #FAFAF7;
+  --clr-text-dark:    #1A1A1A;
+  --clr-text-mid:     #4A4A4A;
+  --clr-text-muted:   #888880;
+  --clr-overlay:      rgba(13, 43, 34, 0.72);
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-accent:  'Cormorant Garamond', Georgia, serif;
+
+  /* Spacing Scale */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  2rem;
+  --space-lg:  4rem;
+  --space-xl:  6rem;
+  --space-2xl: 10rem;
+
+  /* Transitions */
+  --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-elegant: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dur-fast:     200ms;
+  --dur-mid:      400ms;
+  --dur-slow:     700ms;
+
+  /* Shadows */
+  --shadow-sm:  0 2px 12px rgba(13, 43, 34, 0.08);
+  --shadow-md:  0 8px 40px rgba(13, 43, 34, 0.14);
+  --shadow-lg:  0 20px 80px rgba(13, 43, 34, 0.20);
+  --shadow-gold: 0 4px 24px rgba(200, 151, 58, 0.30);
+
+  /* Border Radius */
+  --radius-sm:  6px;
+  --radius-md:  16px;
+  --radius-lg:  32px;
+  --radius-xl:  48px;
+  --radius-full: 9999px;
+}
+
+/* ─── 2. RESET & BASE ────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--clr-text-dark);
+  background-color: var(--clr-white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+img { display: block; max-width: 100%; }
+a   { text-decoration: none; color: inherit; }
+ul  { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* ─── 3. TYPOGRAPHY SCALE ────────────────────────────────────── */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+}
+
+.body-lg {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.75;
+  color: var(--clr-text-mid);
+}
+
+.body-md {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--clr-text-mid);
+}
+
+/* ─── 4. UTILITY CLASSES ─────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 5rem);
+}
+
+.container--narrow {
+  max-width: 860px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 5rem);
+}
+
+.text-center { text-align: center; }
+.text-gold    { color: var(--clr-gold); }
+.text-white   { color: var(--clr-white); }
+.text-forest  { color: var(--clr-forest); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--dur-slow) var(--ease-smooth),
+              transform var(--dur-slow) var(--ease-smooth);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 220ms; }
+.reveal-delay-3 { transition-delay: 340ms; }
+.reveal-delay-4 { transition-delay: 460ms; }
+
+/* ─── 5. BUTTONS ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: transform var(--dur-fast) var(--ease-spring),
+              box-shadow var(--dur-fast) var(--ease-smooth),
+              background-color var(--dur-fast) var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  opacity: 0;
+  transition: opacity var(--dur-fast);
+}
+
+.btn:hover::before { opacity: 1; }
+.btn:hover         { transform: translateY(-2px); }
+.btn:active        { transform: translateY(0); }
+
+.btn--primary {
+  background: var(--clr-gold);
+  color: var(--clr-forest);
+  box-shadow: var(--shadow-gold);
+}
+.btn--primary:hover {
+  background: var(--clr-gold-light);
+  box-shadow: 0 8px 32px rgba(200, 151, 58, 0.45);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--clr-white);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  backdrop-filter: blur(8px);
+}
+.btn--outline:hover {
+  border-color: var(--clr-white);
+  background: rgba(255,255,255,0.08);
+}
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--clr-forest);
+  border: 1.5px solid var(--clr-forest);
+}
+.btn--outline-dark:hover {
+  background: var(--clr-forest);
+  color: var(--clr-white);
+}
+
+.btn--ghost {
+  color: var(--clr-white);
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: rgba(255,255,255,0.1);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--dur-mid) var(--ease-smooth);
+}
+.btn--ghost:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-2px);
+}
+
+/* ─── 6. NAVBAR ──────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: background-color var(--dur-mid) var(--ease-smooth),
+              padding var(--dur-mid) var(--ease-smooth),
+              backdrop-filter var(--dur-mid) var(--ease-smooth),
+              box-shadow var(--dur-mid) var(--ease-smooth);
+}
+
+.navbar.is-scrolled {
+  background: rgba(13, 43, 34, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 1rem 0;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06), var(--shadow-md);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.navbar__logo-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: 0.05em;
+}
+
+.navbar__logo-sub {
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+  margin-top: 2px;
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.navbar__link {
+  color: rgba(255,255,255,0.80);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color var(--dur-fast);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--clr-gold);
+  transition: width var(--dur-mid) var(--ease-smooth);
+}
+
+.navbar__link:hover       { color: var(--clr-white); }
+.navbar__link:hover::after { width: 100%; }
+
+.navbar__cta { margin-left: 1rem; }
+
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+}
+
+.navbar__hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--clr-white);
+  transition: transform var(--dur-mid), opacity var(--dur-mid);
+}
+
+/* ─── 7. HERO SECTION ────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--clr-forest);
+}
+
+/* Canvas for particle animation */
+.hero__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Parallax background layers */
+.hero__bg {
+  position: absolute;
+  inset: -10%;
+  z-index: 0;
+  background-image:
+    url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1800&q=85&auto=format');
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+.hero__bg-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 43, 34, 0.88) 0%,
+    rgba(13, 43, 34, 0.65) 50%,
+    rgba(13, 43, 34, 0.45) 100%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.hero__text-col {}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero__eyebrow-line {
+  width: 40px;
+  height: 1px;
+  background: var(--clr-gold);
+}
+
+.hero__title {
+  color: var(--clr-white);
+  margin-bottom: 1.5rem;
+}
+
+.hero__title em {
+  font-style: normal;
+  color: var(--clr-gold);
+  display: block;
+}
+
+.hero__tagline {
+  font-family: var(--font-accent);
+  font-size: clamp(1rem, 1.8vw, 1.375rem);
+  color: rgba(255,255,255,0.72);
+  font-style: italic;
+  margin-bottom: 2.5rem;
+}
+
+.hero__features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin-bottom: 3rem;
+}
+
+.hero__feature {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  color: rgba(255,255,255,0.88);
+  font-size: 0.975rem;
+}
+
+.hero__feature-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--clr-gold);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.hero__feature-icon svg {
+  width: 12px;
+  height: 12px;
+  color: var(--clr-forest);
+}
+
+.hero__feature--highlight {
+  color: var(--clr-gold-light);
+  font-weight: 600;
+}
+
+.hero__cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Hero Card / Visual */
+.hero__visual-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__card {
+  position: relative;
+  width: 380px;
+  animation: heroCardFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroCardFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+
+.hero__card-inner {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__card-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,151,58,0.3), transparent 70%);
+  top: -60px;
+  right: -60px;
+  pointer-events: none;
+}
+
+.hero__card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(200,151,58,0.15);
+  border: 1px solid rgba(200,151,58,0.35);
+  border-radius: var(--radius-full);
+  padding: 0.375rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--clr-gold-light);
+  letter-spacing: 0.06em;
+  margin-bottom: 1.5rem;
+}
+
+.hero__card-badge span { width: 7px; height: 7px; border-radius: 50%; background: var(--clr-gold); display: block; }
+
+.hero__card-title {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--clr-white);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.hero__card-desc {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 2rem;
+}
+
+.hero__card-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero__stat {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.hero__stat-num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--clr-gold);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.hero__stat-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero__card-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin-bottom: 1.5rem;
+}
+
+.hero__card-services {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.hero__card-service {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.hero__card-service-name {
+  color: rgba(255,255,255,0.75);
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.hero__card-service-name::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clr-sage-light);
+  display: block;
+  flex-shrink: 0;
+}
+
+.hero__card-service-price {
+  font-weight: 600;
+  color: var(--clr-white);
+}
+
+/* ─── 8. ABOUT SECTION ───────────────────────────────────────── */
+.about {
+  padding: var(--space-xl) 0;
+  background: var(--clr-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: 'SERENITY';
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: var(--font-display);
+  font-size: 8rem;
+  font-weight: 700;
+  color: var(--clr-forest);
+  opacity: 0.03;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.about__img-wrap {
+  position: relative;
+}
+
+.about__img-main {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.about__img-accent {
+  position: absolute;
+  bottom: -2rem;
+  right: -2rem;
+  width: 55%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 6px solid var(--clr-white);
+  box-shadow: var(--shadow-md);
+}
+
+.about__years-badge {
+  position: absolute;
+  top: -1.5rem;
+  left: -1.5rem;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--clr-gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-gold);
+}
+
+.about__years-num {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--clr-forest);
+  line-height: 1;
+}
+
+.about__years-text {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-forest);
+  text-align: center;
+}
+
+.about__text-col {}
+
+.about__eyebrow { margin-bottom: 1rem; }
+
+.about__heading {
+  color: var(--clr-forest);
+  margin-bottom: 1.5rem;
+}
+
+.about__body {
+  margin-bottom: 1.75rem;
+}
+
+.about__pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.about__pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  background: var(--clr-ivory);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--clr-gold);
+}
+
+.about__pillar-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.about__pillar-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--clr-forest);
+}
+
+.about__pillar-desc {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+  line-height: 1.5;
+}
+
+/* ─── 9. SERVICES SECTION ────────────────────────────────────── */
+.services {
+  padding: var(--space-xl) 0;
+  background: var(--clr-forest);
+  position: relative;
+  overflow: hidden;
+}
+
+.services__bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    radial-gradient(circle at 20% 50%, var(--clr-gold) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, var(--clr-sage) 1px, transparent 1px);
+  background-size: 48px 48px, 64px 64px;
+  pointer-events: none;
+}
+
+.services__header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.services__heading {
+  color: var(--clr-white);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.services__subhead {
+  color: rgba(255,255,255,0.55);
+  max-width: 52ch;
+  margin-inline: auto;
+}
+
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.service-card {
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  cursor: pointer;
+  transition: transform var(--dur-mid) var(--ease-spring),
+              border-color var(--dur-mid),
+              box-shadow var(--dur-mid);
+  will-change: transform;
+  overflow: hidden;
+}
+
+/* Background image layer */
+.service-card__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;
+  transition: opacity var(--dur-mid), transform 0.6s var(--ease-spring);
+  z-index: 0;
+}
+
+.service-card:hover .service-card__bg {
+  opacity: 0.70;
+  transform: scale(1.06);
+}
+
+/* Dark gradient overlay so text stays readable */
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(170deg,
+    rgba(10,25,18,0.60) 0%,
+    rgba(10,25,18,0.40) 40%,
+    rgba(10,25,18,0.75) 100%);
+  z-index: 1;
+  transition: opacity var(--dur-mid);
+}
+
+/* Gold shimmer on hover */
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200,151,58,0.18) 0%, transparent 60%);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity var(--dur-mid);
+}
+
+.service-card:hover::after { opacity: 1; }
+
+/* All direct children above overlays */
+.service-card > *:not(.service-card__bg) {
+  position: relative;
+  z-index: 2;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(200,151,58,0.35);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35), 0 0 0 1px rgba(200,151,58,0.15);
+}
+
+.service-card__number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--clr-gold);
+  margin-bottom: 1.75rem;
+  display: block;
+}
+
+.service-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: rgba(200,151,58,0.12);
+  border: 1px solid rgba(200,151,58,0.2);
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  transition: background-color var(--dur-mid), transform var(--dur-mid) var(--ease-spring);
+}
+
+.service-card:hover .service-card__icon {
+  background: rgba(200,151,58,0.22);
+  transform: scale(1.08);
+}
+
+.service-card__name {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--clr-white);
+  margin-bottom: 0.875rem;
+}
+
+.service-card__desc {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}
+
+.service-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.service-card__price {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--clr-gold);
+}
+
+.service-card__price-note {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  display: block;
+}
+
+.service-card__arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,0.5);
+  transition: all var(--dur-mid) var(--ease-spring);
+}
+
+.service-card:hover .service-card__arrow {
+  background: var(--clr-gold);
+  border-color: var(--clr-gold);
+  color: var(--clr-forest);
+  transform: rotate(45deg);
+}
+
+/* ─── 10. EXPERIENCE STRIP ───────────────────────────────────── */
+.strip {
+  background: var(--clr-gold);
+  padding: 3rem 0;
+  overflow: hidden;
+}
+
+.strip__inner {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.strip__stat {
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.strip__num {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--clr-forest);
+  line-height: 1;
+  display: block;
+}
+
+.strip__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--clr-forest);
+  opacity: 0.7;
+  margin-top: 0.375rem;
+}
+
+/* ─── 11. TESTIMONIALS ───────────────────────────────────────── */
+.testimonials {
+  padding: var(--space-xl) 0;
+  background: var(--clr-ivory);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials__header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.testimonials__heading {
+  color: var(--clr-forest);
+  margin-top: 1rem;
+}
+
+.testimonials__carousel {
+  position: relative;
+}
+
+.testimonials__track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.testi-card {
+  background: var(--clr-white);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(13,43,34,0.06);
+  transition: transform var(--dur-mid) var(--ease-spring),
+              box-shadow var(--dur-mid);
+}
+
+.testi-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.testi-card__stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 1.25rem;
+  color: var(--clr-gold);
+  font-size: 0.875rem;
+}
+
+.testi-card__quote {
+  font-family: var(--font-accent);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--clr-text-dark);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--clr-gold-pale);
+}
+
+.testi-card__author {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.testi-card__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--clr-gold-pale);
+}
+
+.testi-card__avatar-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--clr-forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-gold);
+  flex-shrink: 0;
+  border: 2px solid var(--clr-gold-pale);
+}
+
+.testi-card__name {
+  font-weight: 600;
+  font-size: 0.925rem;
+  color: var(--clr-forest);
+}
+
+.testi-card__location {
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+}
+
+/* ─── 12. AREAS SECTION ──────────────────────────────────────── */
+.areas {
+  padding: var(--space-xl) 0;
+  background: var(--clr-white);
+}
+
+.areas__header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.areas__heading {
+  color: var(--clr-forest);
+  margin-top: 1rem;
+}
+
+.areas__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.area-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.25rem;
+  background: var(--clr-ivory);
+  border: 1px solid rgba(13,43,34,0.08);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--clr-forest);
+  transition: all var(--dur-mid) var(--ease-spring);
+  cursor: default;
+}
+
+.area-pill:hover {
+  background: var(--clr-forest);
+  color: var(--clr-white);
+  transform: scale(1.04);
+  box-shadow: var(--shadow-md);
+}
+
+.area-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clr-gold);
+  flex-shrink: 0;
+}
+
+/* ─── 13. CTA SECTION ────────────────────────────────────────── */
+.cta-section {
+  padding: var(--space-xl) 0;
+  background: var(--clr-forest-mid);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,151,58,0.12), transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cta-section__eyebrow { margin-bottom: 1rem; }
+
+.cta-section__heading {
+  color: var(--clr-white);
+  margin-bottom: 1rem;
+}
+
+.cta-section__body {
+  color: rgba(255,255,255,0.6);
+  max-width: 52ch;
+  margin-inline: auto;
+  margin-bottom: 3rem;
+}
+
+.cta-section__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+/* ─── 14. FOOTER ─────────────────────────────────────────────── */
+.footer {
+  background: var(--clr-forest);
+  padding: var(--space-lg) 0 var(--space-md);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 4rem;
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 2rem;
+}
+
+.footer__brand-name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+
+.footer__brand-sub {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+  margin-bottom: 1rem;
+}
+
+.footer__brand-desc {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+  max-width: 32ch;
+}
+
+.footer__heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+  margin-bottom: 1.25rem;
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer__link {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+  transition: color var(--dur-fast);
+}
+
+.footer__link:hover { color: var(--clr-white); }
+
+.footer__contact-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 0.875rem;
+}
+
+.footer__contact-icon {
+  color: var(--clr-gold);
+  font-size: 1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.footer__contact-text {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+}
+
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer__copy {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer__socials {
+  display: flex;
+  gap: 0.875rem;
+}
+
+.footer__social {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.875rem;
+  transition: all var(--dur-mid) var(--ease-spring);
+}
+
+.footer__social:hover {
+  background: var(--clr-gold);
+  border-color: var(--clr-gold);
+  color: var(--clr-forest);
+  transform: translateY(-3px);
+}
+
+/* ─── 15. FLOATING WhatsApp ──────────────────────────────────── */
+.wa-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #25D366;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.45);
+  transition: transform var(--dur-mid) var(--ease-spring),
+              box-shadow var(--dur-mid);
+  animation: waPulse 3s ease-in-out infinite;
+}
+
+.wa-float:hover {
+  transform: scale(1.12);
+  box-shadow: 0 12px 48px rgba(37, 211, 102, 0.6);
+  animation: none;
+}
+
+@keyframes waPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(37,211,102,0.45), 0 0 0 0 rgba(37,211,102,0.35); }
+  50%       { box-shadow: 0 8px 32px rgba(37,211,102,0.45), 0 0 0 16px rgba(37,211,102,0); }
+}
+
+.wa-float svg {
+  width: 30px;
+  height: 30px;
+  fill: white;
+}
+
+.ig-float {
+  position: fixed;
+  bottom: 6.5rem;
+  right: 2rem;
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 32px rgba(214, 36, 159, 0.45);
+  transition: transform var(--dur-mid) var(--ease-spring),
+              box-shadow var(--dur-mid);
+  animation: igPulse 3s ease-in-out infinite 1.5s;
+}
+
+.ig-float:hover {
+  transform: scale(1.12);
+  box-shadow: 0 12px 48px rgba(214, 36, 159, 0.6);
+  animation: none;
+}
+
+@keyframes igPulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(214,36,159,0.45), 0 0 0 0 rgba(214,36,159,0.35); }
+  50%       { box-shadow: 0 8px 32px rgba(214,36,159,0.45), 0 0 0 16px rgba(214,36,159,0); }
+}
+
+.ig-float svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+  stroke: none;
+}
+
+/* ─── 16. SCROLL PROGRESS ────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--clr-gold), var(--clr-gold-light));
+  z-index: 2000;
+  transition: width 50ms linear;
+  transform-origin: left;
+}
+
+/* ─── 17. MOBILE MENU ────────────────────────────────────────── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: var(--clr-forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-mid) var(--ease-smooth);
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-menu__link {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--clr-white);
+  letter-spacing: -0.01em;
+  transition: color var(--dur-fast);
+}
+
+.mobile-menu__link:hover { color: var(--clr-gold); }
+
+/* ─── 18. SECTION DIVIDER ────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,151,58,0.3), transparent);
+  margin: 0;
+}
+
+/* ─── 19. RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero__content { grid-template-columns: 1fr; gap: 3rem; }
+  .hero__visual-col { display: none; }
+  .about__grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about__img-wrap { max-width: 500px; margin-inline: auto; }
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .testimonials__track { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .navbar__nav { display: none; }
+  .navbar__cta { display: none; }
+  .navbar__hamburger { display: flex; }
+
+  .services__grid { grid-template-columns: 1fr; }
+  .testimonials__track { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about__pillars { grid-template-columns: 1fr; }
+
+  .hero__cta-group { flex-direction: column; }
+  .cta-section__btns { flex-direction: column; align-items: center; }
+
+  .strip__inner { gap: 2.5rem; }
+  .areas__grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+  </style>
+</head>
+<body>
+
+<!-- ─── SCROLL PROGRESS ──────────────────────────────────────── -->
+<div class="scroll-progress" role="progressbar" aria-hidden="true"></div>
+
+<!-- ─── MOBILE MENU ──────────────────────────────────────────── -->
+<nav class="mobile-menu" aria-label="Mobile navigation menu">
+  <a href="#tentang"      class="mobile-menu__link">About Us</a>
+  <a href="#layanan"      class="mobile-menu__link">Services</a>
+  <a href="#harga"        class="mobile-menu__link">Pricing</a>
+  <a href="#testimoni"    class="mobile-menu__link">Testimonials</a>
+  <a href="#area"         class="mobile-menu__link">Our Areas</a>
+  <a href="#kontak"       class="mobile-menu__link">Contact</a>
+</nav>
+
+<!-- ─── NAVBAR ───────────────────────────────────────────────── -->
+<header class="navbar" role="banner">
+  <div class="container navbar__inner">
+
+    <a href="#" class="navbar__logo" aria-label="Axella Home Service SPA">
+      <span class="navbar__logo-name">AXELLA</span>
+      <span class="navbar__logo-sub">Home Service SPA</span>
+    </a>
+
+    <nav class="navbar__nav" aria-label="Main navigation">
+      <a href="#tentang"   class="navbar__link">About Us</a>
+      <a href="#layanan"   class="navbar__link">Services</a>
+      <a href="#harga"     class="navbar__link">Pricing</a>
+      <a href="#testimoni" class="navbar__link">Testimonials</a>
+      <a href="#area"      class="navbar__link">Areas</a>
+      <a href="#kontak"    class="navbar__link">Contact</a>
+    </nav>
+
+    <a href="https://wa.me/6282171483470?text=Hello%20Axella%20Home%20Service%20SPA%2C%20I%20would%20like%20to%20book%20a%20massage%20session"
+       class="btn btn--primary navbar__cta"
+       target="_blank" rel="noopener">
+      Book Now
+    </a>
+
+    <button class="navbar__hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</header>
+
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section class="hero" id="beranda" aria-label="Hero">
+
+  <!-- Parallax background -->
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__bg-gradient" aria-hidden="true"></div>
+
+  <!-- Particle canvas -->
+  <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="container hero__content">
+
+    <!-- Left: Text -->
+    <div class="hero__text-col">
+      <div class="hero__eyebrow hero-anim"
+           style="opacity:0;transform:translateY(30px);transition:opacity 0.7s,transform 0.7s">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+        <span class="eyebrow">Home Massage On-Call</span>
+      </div>
+
+      <h1 class="display-xl hero__title hero-anim"
+          style="opacity:0;transform:translateY(30px);transition:opacity 0.7s,transform 0.7s">
+        Axella Home
+        <em>Service SPA</em>
+      </h1>
+
+      <p class="hero__tagline hero-anim"
+         style="opacity:0;transform:translateY(30px);transition:opacity 0.7s,transform 0.7s">
+        "Your Truly Solutions — serenity delivered right to your door"
+      </p>
+
+      <ul class="hero__features hero-anim"
+          style="opacity:0;transform:translateY(30px);transition:opacity 0.7s,transform 0.7s"
+          aria-label="Our highlights">
+        <li class="hero__feature">
+          <span class="hero__feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <polyline points="2,6 5,9 10,3"/>
+            </svg>
+          </span>
+          Friendly &amp; Professionally Certified Therapists
+        </li>
+        <li class="hero__feature">
+          <span class="hero__feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <polyline points="2,6 5,9 10,3"/>
+            </svg>
+          </span>
+          Easy &amp; Fast Booking via WhatsApp
+        </li>
+        <li class="hero__feature hero__feature--highlight">
+          <span class="hero__feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <polyline points="2,6 5,9 10,3"/>
+            </svg>
+          </span>
+          🎁 Free Transportation Fee
+        </li>
+        <li class="hero__feature">
+          <span class="hero__feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <polyline points="2,6 5,9 10,3"/>
+            </svg>
+          </span>
+          Starting from <strong>Rp 100,000</strong> — Affordable &amp; Transparent
+        </li>
+        <li class="hero__feature">
+          <span class="hero__feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <polyline points="2,6 5,9 10,3"/>
+            </svg>
+          </span>
+          Serving Bali's Most Popular Tourism Areas
+        </li>
+      </ul>
+
+      <div class="hero__cta-group hero-anim"
+           style="opacity:0;transform:translateY(30px);transition:opacity 0.7s,transform 0.7s">
+        <a href="#harga" class="btn btn--primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+          View Pricing
+        </a>
+        <a href="https://wa.me/6282171483470?text=Hello%20Axella%20Home%20Service%20SPA%2C%20I%20would%20like%20to%20book%20a%20session"
+           class="btn--ghost" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Book Now
+        </a>
+        <a href="#testimoni" class="btn btn--outline">
+          View Testimonials
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Floating card -->
+    <div class="hero__visual-col">
+      <div class="hero__card" aria-hidden="true">
+        <div class="hero__card-inner">
+          <div class="hero__card-glow"></div>
+
+          <div class="hero__card-badge">
+            <span></span>
+            Available 24 Hours
+          </div>
+
+          <h3 class="hero__card-title">Premium Service<br>To Your Door</h3>
+          <p class="hero__card-desc">Professional therapists ready to arrive within 60 minutes</p>
+
+          <div class="hero__card-stats">
+            <div class="hero__stat">
+              <div class="hero__stat-num" data-count="5000" data-suffix="+">0</div>
+              <div class="hero__stat-label">Happy Clients</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-num" data-count="4.9" data-suffix="★">0</div>
+              <div class="hero__stat-label">Average Rating</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-num" data-count="15" data-suffix=" Areas">0</div>
+              <div class="hero__stat-label">Service Areas</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-num" data-count="8" data-suffix=" Yrs">0</div>
+              <div class="hero__stat-label">Experience</div>
+            </div>
+          </div>
+
+          <div class="hero__card-divider"></div>
+
+          <ul class="hero__card-services">
+            <li class="hero__card-service">
+              <span class="hero__card-service-name">Relaxation Massage</span>
+              <span class="hero__card-service-price">Rp 100rb</span>
+            </li>
+            <li class="hero__card-service">
+              <span class="hero__card-service-name">Deep Tissue</span>
+              <span class="hero__card-service-price">Rp 150rb</span>
+            </li>
+            <li class="hero__card-service">
+              <span class="hero__card-service-name">Reflexology Foot</span>
+              <span class="hero__card-service-price">Rp 120rb</span>
+            </li>
+            <li class="hero__card-service">
+              <span class="hero__card-service-name">Full Body Spa</span>
+              <span class="hero__card-service-price">Rp 250rb</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────────── -->
+<section class="about" id="tentang" aria-labelledby="about-heading">
+  <div class="container about__grid">
+
+    <div class="about__img-wrap reveal">
+      <img
+        src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=800&q=80&auto=format"
+        alt="Professional Axella Home Service SPA therapist"
+        class="about__img-main"
+        loading="lazy"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80&auto=format"
+        alt="Relaxation massage atmosphere"
+        class="about__img-accent"
+        loading="lazy"
+      />
+      <div class="about__years-badge" aria-label="8 years of experience">
+        <span class="about__years-num">8+</span>
+        <span class="about__years-text">Years<br>Serving</span>
+      </div>
+    </div>
+
+    <div class="about__text-col">
+      <p class="eyebrow about__eyebrow reveal">About Axella</p>
+      <h2 id="about-heading" class="display-lg about__heading reveal reveal-delay-1">
+        We're Here for<br>Your Serenity
+      </h2>
+      <p class="body-lg about__body reveal reveal-delay-2">
+        Axella Home Service SPA was born from a simple belief: true relaxation should be enjoyed in the comfort of your own home. Since 2016, we have served thousands of families across Bali with authentic and caring therapeutic touch.
+      </p>
+      <p class="body-md about__body reveal reveal-delay-2" style="margin-top:-1rem">
+        Every one of our therapists is selected through a rigorous screening process, receives certified training, and is committed to providing a safe, comfortable, and professional experience — right in your home.
+      </p>
+
+      <div class="about__pillars reveal reveal-delay-3">
+        <div class="about__pillar">
+          <span class="about__pillar-icon">🎓</span>
+          <span class="about__pillar-label">Certified</span>
+          <p class="about__pillar-desc">All therapists pass official certified training programs</p>
+        </div>
+        <div class="about__pillar">
+          <span class="about__pillar-icon">🔒</span>
+          <span class="about__pillar-label">Safe & Trusted</span>
+          <p class="about__pillar-desc">Verified therapist identity, fully transparent service</p>
+        </div>
+        <div class="about__pillar">
+          <span class="about__pillar-icon">⚡</span>
+          <span class="about__pillar-label">Fast Response</span>
+          <p class="about__pillar-desc">Therapist arrives within 30–60 minutes after booking</p>
+        </div>
+        <div class="about__pillar">
+          <span class="about__pillar-icon">💚</span>
+          <span class="about__pillar-label">Clean Equipment</span>
+          <p class="about__pillar-desc">All equipment washed & sterilized before every session</p>
+        </div>
+      </div>
+
+      <a href="#layanan" class="btn btn--outline-dark reveal reveal-delay-4">
+        View All Services
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<!-- ─── SERVICES ──────────────────────────────────────────────── -->
+<section class="services" id="layanan" aria-labelledby="services-heading">
+  <div class="services__bg-pattern" aria-hidden="true"></div>
+  <div class="container">
+
+    <div class="services__header">
+      <p class="eyebrow reveal">Our Services</p>
+      <h2 id="services-heading" class="display-lg services__heading reveal reveal-delay-1">
+        Find the Right Therapy
+      </h2>
+      <p class="body-md services__subhead reveal reveal-delay-2">
+        From gentle relaxation massage to intensive deep tissue therapy —
+        all enjoyed from the comfort of your home.
+      </p>
+    </div>
+
+    <div class="services__grid" role="list">
+
+      <article class="service-card reveal" role="listitem">
+        <div class="service-card__bg" style="background-image:url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&auto=format&fit=crop&q=80')"></div>
+        <span class="service-card__number">01</span>
+        <div class="service-card__icon" aria-hidden="true">🌿</div>
+        <h3 class="service-card__name">Relaxation Massage</h3>
+        <p class="service-card__desc">
+          Full body massage with gentle pressure to relieve muscle tension,
+          improve blood circulation, and bring peace of mind.
+        </p>
+        <div class="service-card__footer">
+          <div>
+            <span class="service-card__price">Starting Rp 100k</span>
+            <span class="service-card__price-note">60 minutes</span>
+          </div>
+          <div class="service-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal reveal-delay-1" role="listitem">
+        <div class="service-card__bg" style="background-image:url('https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&auto=format&fit=crop&q=80')"></div>
+        <span class="service-card__number">02</span>
+        <div class="service-card__icon" aria-hidden="true">💪</div>
+        <h3 class="service-card__name">Deep Tissue Therapy</h3>
+        <p class="service-card__desc">
+          Deep pressure on inner muscle layers to address chronic pain,
+          stiffness, and tension after heavy activity or intense exercise.
+        </p>
+        <div class="service-card__footer">
+          <div>
+            <span class="service-card__price">Starting Rp 150k</span>
+            <span class="service-card__price-note">60 minutes</span>
+          </div>
+          <div class="service-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal reveal-delay-2" role="listitem">
+        <div class="service-card__bg" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&auto=format&fit=crop&q=80')"></div>
+        <span class="service-card__number">03</span>
+        <div class="service-card__icon" aria-hidden="true">👣</div>
+        <h3 class="service-card__name">Reflexology & Foot Spa</h3>
+        <p class="service-card__desc">
+          Traditional foot reflexology technique that stimulates the body's energy points,
+          relieves aching, and improves your sleep quality.
+        </p>
+        <div class="service-card__footer">
+          <div>
+            <span class="service-card__price">Starting Rp 120k</span>
+            <span class="service-card__price-note">45 minutes</span>
+          </div>
+          <div class="service-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal reveal-delay-1" role="listitem">
+        <div class="service-card__bg" style="background-image:url('https://images.unsplash.com/photo-1552693673-1bf958298935?w=600&auto=format&fit=crop&q=80')"></div>
+        <span class="service-card__number">04</span>
+        <div class="service-card__icon" aria-hidden="true">✨</div>
+        <h3 class="service-card__name">Full Body Spa</h3>
+        <p class="service-card__desc">
+          Complete spa experience including body scrub, body mask, aromatherapy,
+          and relaxation massage for total rejuvenation from head to toe.
+        </p>
+        <div class="service-card__footer">
+          <div>
+            <span class="service-card__price">Starting Rp 250k</span>
+            <span class="service-card__price-note">120 minutes</span>
+          </div>
+          <div class="service-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal reveal-delay-2" role="listitem">
+        <div class="service-card__bg" style="background-image:url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&auto=format&fit=crop&q=80')"></div>
+        <span class="service-card__number">05</span>
+        <div class="service-card__icon" aria-hidden="true">🌸</div>
+        <h3 class="service-card__name">Prenatal Massage</h3>
+        <p class="service-card__desc">
+          A safe, gentle, and soothing massage specially for expectant mothers.
+          Designed to relieve back pain, swollen feet, and pregnancy stress.
+        </p>
+        <div class="service-card__footer">
+          <div>
+            <span class="service-card__price">Starting Rp 180k</span>
+            <span class="service-card__price-note">60 minutes</span>
+          </div>
+          <div class="service-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card reveal reveal-delay-3" role="listitem">
+        <div class="service-card__bg" style="background-image:url('https://images.unsplash.com/photo-1574180566232-aaad1b5b8450?w=600&auto=format&fit=crop&q=80')"></div>
+        <span class="service-card__number">06</span>
+        <div class="service-card__icon" aria-hidden="true">🧘</div>
+        <h3 class="service-card__name">Shiatsu & Acupressure</h3>
+        <p class="service-card__desc">
+          Traditional Japanese massage technique using finger pressure on body meridians
+          to balance energy, address insomnia, and reduce migraines.
+        </p>
+        <div class="service-card__footer">
+          <div>
+            <span class="service-card__price">Starting Rp 160k</span>
+            <span class="service-card__price-note">60 minutes</span>
+          </div>
+          <div class="service-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS STRIP ───────────────────────────────────────────── -->
+<div class="strip" id="harga" aria-label="Service statistics">
+  <div class="strip__inner">
+    <div class="strip__stat">
+      <span class="strip__num" data-count="5000" data-suffix="+">0</span>
+      <span class="strip__label">Happy Clients</span>
+    </div>
+    <div class="strip__stat">
+      <span class="strip__num" data-count="7" data-suffix=" Areas">0</span>
+      <span class="strip__label">Service Areas</span>
+    </div>
+    <div class="strip__stat">
+      <span class="strip__num" data-count="50" data-suffix="+">0</span>
+      <span class="strip__label">Active Therapists</span>
+    </div>
+    <div class="strip__stat">
+      <span class="strip__num" data-count="8" data-suffix=" Yrs">0</span>
+      <span class="strip__label">Experience</span>
+    </div>
+    <div class="strip__stat">
+      <span class="strip__num" data-count="4.9" data-suffix="★">0</span>
+      <span class="strip__label">Average Rating</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────────── -->
+<section class="testimonials" id="testimoni" aria-labelledby="testi-heading">
+  <div class="container">
+
+    <div class="testimonials__header">
+      <p class="eyebrow reveal">Client Stories</p>
+      <h2 id="testi-heading" class="display-lg testimonials__heading reveal reveal-delay-1">
+        They've Experienced It
+      </h2>
+    </div>
+
+    <div class="testimonials__track" role="list">
+
+      <article class="testi-card reveal" role="listitem">
+        <div class="testi-card__stars" aria-label="5-star rating">★★★★★</div>
+        <blockquote class="testi-card__quote">
+          "The therapist arrived on time, very friendly and professional. After the deep tissue session,
+          my long-stiff back felt so much lighter. Will definitely book again!"
+        </blockquote>
+        <div class="testi-card__author">
+          <div class="testi-card__avatar-placeholder" aria-hidden="true">AR</div>
+          <div>
+            <p class="testi-card__name">Anita Rahayu</p>
+            <p class="testi-card__location">Batu Bolong, Canggu</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card reveal reveal-delay-1" role="listitem">
+        <div class="testi-card__stars" aria-label="5-star rating">★★★★★</div>
+        <blockquote class="testi-card__quote">
+          "The Full Body Spa was amazing! No need to leave home, I could just relax in my own bed.
+          The aromatherapy used was so soothing. Highly recommended!"
+        </blockquote>
+        <div class="testi-card__author">
+          <div class="testi-card__avatar-placeholder" aria-hidden="true">BP</div>
+          <div>
+            <p class="testi-card__name">Budi Prasetyo</p>
+            <p class="testi-card__location">Seminyak, Bali</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card reveal reveal-delay-2" role="listitem">
+        <div class="testi-card__stars" aria-label="5-star rating">★★★★★</div>
+        <blockquote class="testi-card__quote">
+          "The prenatal massage was incredibly helpful. The therapist truly understood the safe positions
+          for pregnant mothers. The swelling in my feet reduced drastically. Thank you Axella!"
+        </blockquote>
+        <div class="testi-card__author">
+          <div class="testi-card__avatar-placeholder" aria-hidden="true">DW</div>
+          <div>
+            <p class="testi-card__name">Dewi Wijayanti</p>
+            <p class="testi-card__location">Nusa Dua, Bali</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card reveal" role="listitem">
+        <div class="testi-card__stars" aria-label="5-star rating">★★★★★</div>
+        <blockquote class="testi-card__quote">
+          "Very affordable price for this level of quality. Therapist arrived within 45 minutes,
+          equipment was clean and fragrant. Service is 10/10, been a regular for 6 months!"
+        </blockquote>
+        <div class="testi-card__author">
+          <div class="testi-card__avatar-placeholder" aria-hidden="true">RS</div>
+          <div>
+            <p class="testi-card__name">Rizky Santoso</p>
+            <p class="testi-card__location">Kuta, Bali</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card reveal reveal-delay-1" role="listitem">
+        <div class="testi-card__stars" aria-label="5-star rating">★★★★★</div>
+        <blockquote class="testi-card__quote">
+          "The reflexology is top-notch! My tired feet after a full day of walking felt instantly refreshed.
+          Booking via WhatsApp is also very easy and responsive."
+        </blockquote>
+        <div class="testi-card__author">
+          <div class="testi-card__avatar-placeholder" aria-hidden="true">NA</div>
+          <div>
+            <p class="testi-card__name">Novi Astuti</p>
+            <p class="testi-card__location">Sanur, Bali</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card reveal reveal-delay-2" role="listitem">
+        <div class="testi-card__stars" aria-label="5-star rating">★★★★★</div>
+        <blockquote class="testi-card__quote">
+          "Free transportation is an amazing bonus! The therapist quality is on par with 5-star hotel spas
+          but at a very friendly price. Have already recommended to the entire family."
+        </blockquote>
+        <div class="testi-card__author">
+          <div class="testi-card__avatar-placeholder" aria-hidden="true">HK</div>
+          <div>
+            <p class="testi-card__name">Hendra Kusuma</p>
+            <p class="testi-card__location">Uluwatu, Bali</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── AREAS ─────────────────────────────────────────────────── -->
+<section class="areas" id="area" aria-labelledby="area-heading">
+  <div class="container">
+
+    <div class="areas__header">
+      <p class="eyebrow reveal">Service Coverage</p>
+      <h2 id="area-heading" class="display-lg areas__heading reveal reveal-delay-1">
+        We're in Your Area
+      </h2>
+    </div>
+
+    <ul class="areas__grid reveal reveal-delay-2" aria-label="Areas we serve">
+      <li class="area-pill">Jl. Raya Ubud</li>
+      <li class="area-pill">Batu Bolong – Canggu</li>
+      <li class="area-pill">Legian – Seminyak</li>
+      <li class="area-pill">Nusa Dua</li>
+      <li class="area-pill">Jl. Raya Tuban – Kuta</li>
+      <li class="area-pill">Jl. Segra Ayu – Sanur</li>
+      <li class="area-pill">Uluwatu</li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ─── CTA SECTION ───────────────────────────────────────────── -->
+<section class="cta-section" id="kontak" aria-labelledby="cta-heading">
+  <div class="container--narrow">
+    <p class="eyebrow cta-section__eyebrow reveal">Ready to Begin?</p>
+    <h2 id="cta-heading" class="display-lg cta-section__heading reveal reveal-delay-1">
+      Book Your Session Now
+    </h2>
+    <p class="body-lg cta-section__body reveal reveal-delay-2">
+      Contact us via WhatsApp and our therapist will arrive
+      within 30–60 minutes. No need to go anywhere — serenity comes to you.
+    </p>
+    <div class="cta-section__btns reveal reveal-delay-3">
+      <a href="https://wa.me/6282171483470?text=Hello%20Axella%20Home%20Service%20SPA%2C%20I%20would%20like%20to%20book%20a%20session.%20Can%20you%20help%20me%3F"
+         class="btn btn--primary"
+         target="_blank" rel="noopener"
+         style="font-size:1rem;padding:1rem 2.5rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat via WhatsApp
+      </a>
+      <a href="tel:+6282171483470" class="btn btn--outline"
+         style="font-size:1rem;padding:1rem 2.5rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.21 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        Call by Phone
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+
+      <div>
+        <p class="footer__brand-name">AXELLA</p>
+        <p class="footer__brand-sub">Home Service SPA</p>
+        <p class="footer__brand-desc">
+          Professional home spa service delivering relaxation and wellness
+          directly to your door — anytime, anywhere in Bali.
+        </p>
+      </div>
+
+      <div>
+        <p class="footer__heading">Navigation</p>
+        <ul class="footer__links">
+          <li><a href="#tentang"   class="footer__link">About Us</a></li>
+          <li><a href="#layanan"   class="footer__link">Services</a></li>
+          <li><a href="#harga"     class="footer__link">Pricing</a></li>
+          <li><a href="#testimoni" class="footer__link">Testimonials</a></li>
+          <li><a href="#area"      class="footer__link">Service Areas</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__heading">Services</p>
+        <ul class="footer__links">
+          <li><a href="#layanan" class="footer__link">Relaxation Massage</a></li>
+          <li><a href="#layanan" class="footer__link">Deep Tissue</a></li>
+          <li><a href="#layanan" class="footer__link">Reflexology</a></li>
+          <li><a href="#layanan" class="footer__link">Full Body Spa</a></li>
+          <li><a href="#layanan" class="footer__link">Prenatal Massage</a></li>
+          <li><a href="#layanan" class="footer__link">Shiatsu</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer__heading">Contact</p>
+        <div class="footer__contact-item">
+          <span class="footer__contact-icon" aria-hidden="true">📱</span>
+          <span class="footer__contact-text">+62 821-7148-347</span>
+        </div>
+        <div class="footer__contact-item">
+          <span class="footer__contact-icon" aria-hidden="true">📸</span>
+          <span class="footer__contact-text"><a href="https://www.instagram.com/axellahomemassage?igsh=MWVqbXF0cjdxMGdoMg==" target="_blank" rel="noopener" style="color:inherit;">@axellahomemassage</a></span>
+        </div>
+        <div class="footer__contact-item">
+          <span class="footer__contact-icon" aria-hidden="true">⏰</span>
+          <span class="footer__contact-text">Available 24 Hours / 7 Hari</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">
+        &copy; 2025 Axella Home Service SPA. All rights reserved.
+      </p>
+      <nav class="footer__socials" aria-label="Media sosial">
+        <a href="https://www.instagram.com/axellahomemassage?igsh=MWVqbXF0cjdxMGdoMg==" class="footer__social" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="footer__social" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="#" class="footer__social" aria-label="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>
+        </a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── FLOATING INSTAGRAM ─────────────────────────────────────── -->
+<a href="https://www.instagram.com/axellahomemassage?igsh=MWVqbXF0cjdxMGdoMg=="
+   class="ig-float"
+   target="_blank"
+   rel="noopener"
+   aria-label="Instagram">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+  </svg>
+</a>
+
+<!-- ─── FLOATING WHATSAPP ──────────────────────────────────────── -->
+<a href="https://wa.me/6282171483470?text=Hello%20Axella%20Home%20Service%20SPA%2C%20I%20would%20like%20to%20book%20a%20session"
+   class="wa-float"
+   target="_blank"
+   rel="noopener"
+   aria-label="Chat WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ─── SCRIPTS ────────────────────────────────────────────────── -->
+<script>
+/**
+ * SERENE SPA — Main Application Script
+ * Author: Studio Craft
+ * Version: 1.0.0
+ *
+ * Modules:
+ *  1. ParticleSystem   – ambient hero canvas animation
+ *  2. Parallax         – hero background parallax on scroll/mouse
+ *  3. Navbar           – sticky + scroll state + mobile menu
+ *  4. ScrollReveal     – intersection-based reveal animations
+ *  5. CountUp          – animated number counters
+ *  6. TiltCards        – 3D tilt on service cards
+ *  7. ScrollProgress   – progress bar
+ *  8. SmoothScroll     – anchor smooth scroll
+ *  9. init             – boot
+ */
+
+'use strict';
+
+/* ─── 1. PARTICLE SYSTEM ─────────────────────────────────────── */
+class ParticleSystem {
+  constructor(canvas) {
+    this.canvas  = canvas;
+    this.ctx     = canvas.getContext('2d');
+    this.particles = [];
+    this.mouse   = { x: -9999, y: -9999 };
+    this.raf     = null;
+    this.paused  = false;
+
+    this._resize      = this._resize.bind(this);
+    this._onMouseMove = this._onMouseMove.bind(this);
+    this._tick        = this._tick.bind(this);
+  }
+
+  init() {
+    this._resize();
+    this._spawn();
+    window.addEventListener('resize', this._resize, { passive: true });
+    window.addEventListener('mousemove', this._onMouseMove, { passive: true });
+
+    // Pause when not visible
+    document.addEventListener('visibilitychange', () => {
+      this.paused = document.hidden;
+      if (!this.paused) this._tick();
+    });
+
+    this.raf = requestAnimationFrame(this._tick);
+  }
+
+  destroy() {
+    cancelAnimationFrame(this.raf);
+    window.removeEventListener('resize', this._resize);
+    window.removeEventListener('mousemove', this._onMouseMove);
+  }
+
+  _resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.canvas.width  = this.canvas.offsetWidth  * dpr;
+    this.canvas.height = this.canvas.offsetHeight * dpr;
+    this.ctx.scale(dpr, dpr);
+    this.w = this.canvas.offsetWidth;
+    this.h = this.canvas.offsetHeight;
+    this.particles = [];
+    this._spawn();
+  }
+
+  _spawn() {
+    const count = Math.floor((this.w * this.h) / 12000);
+    for (let i = 0; i < count; i++) {
+      this.particles.push(this._createParticle(true));
+    }
+  }
+
+  _createParticle(random = false) {
+    const types = ['orb', 'line', 'dot'];
+    const type  = types[Math.floor(Math.random() * types.length)];
+    return {
+      x:       Math.random() * this.w,
+      y:       random ? Math.random() * this.h : this.h + 20,
+      vx:      (Math.random() - 0.5) * 0.35,
+      vy:      -(Math.random() * 0.4 + 0.15),
+      radius:  Math.random() * 2.5 + 0.5,
+      alpha:   0,
+      maxAlpha: Math.random() * 0.35 + 0.05,
+      life:    0,
+      maxLife: Math.random() * 400 + 200,
+      type,
+      hue:     Math.random() > 0.6 ? 42 : 148,   // gold or sage
+      length:  Math.random() * 30 + 10,
+      angle:   Math.random() * Math.PI * 2,
+      spin:    (Math.random() - 0.5) * 0.015,
+    };
+  }
+
+  _onMouseMove(e) {
+    const rect = this.canvas.getBoundingClientRect();
+    this.mouse.x = e.clientX - rect.left;
+    this.mouse.y = e.clientY - rect.top;
+  }
+
+  _tick() {
+    if (this.paused) return;
+    this.raf = requestAnimationFrame(this._tick);
+
+    this.ctx.clearRect(0, 0, this.w, this.h);
+
+    for (let i = this.particles.length - 1; i >= 0; i--) {
+      const p = this.particles[i];
+      p.life++;
+      p.angle += p.spin;
+
+      // Mouse repulsion
+      const dx   = this.mouse.x - p.x;
+      const dy   = this.mouse.y - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        const force = (120 - dist) / 120;
+        p.vx -= (dx / dist) * force * 0.6;
+        p.vy -= (dy / dist) * force * 0.6;
+      }
+
+      // Dampen velocity
+      p.vx *= 0.98;
+      p.vy *= 0.98;
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      // Fade in/out
+      const half = p.maxLife / 2;
+      p.alpha = p.life < half
+        ? (p.life / half) * p.maxAlpha
+        : ((p.maxLife - p.life) / half) * p.maxAlpha;
+
+      if (p.life >= p.maxLife || p.y < -20 || p.x < -20 || p.x > this.w + 20) {
+        this.particles[i] = this._createParticle();
+        continue;
+      }
+
+      this.ctx.save();
+      this.ctx.globalAlpha = Math.max(0, p.alpha);
+
+      if (p.type === 'orb') {
+        const g = this.ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 6);
+        g.addColorStop(0, `hsla(${p.hue}, 65%, 60%, 0.8)`);
+        g.addColorStop(1, `hsla(${p.hue}, 65%, 60%, 0)`);
+        this.ctx.fillStyle = g;
+        this.ctx.beginPath();
+        this.ctx.arc(p.x, p.y, p.radius * 6, 0, Math.PI * 2);
+        this.ctx.fill();
+
+      } else if (p.type === 'line') {
+        this.ctx.strokeStyle = `hsla(${p.hue}, 50%, 65%, 0.6)`;
+        this.ctx.lineWidth   = 0.8;
+        this.ctx.lineCap     = 'round';
+        this.ctx.beginPath();
+        this.ctx.moveTo(
+          p.x - Math.cos(p.angle) * p.length / 2,
+          p.y - Math.sin(p.angle) * p.length / 2
+        );
+        this.ctx.lineTo(
+          p.x + Math.cos(p.angle) * p.length / 2,
+          p.y + Math.sin(p.angle) * p.length / 2
+        );
+        this.ctx.stroke();
+
+      } else {
+        this.ctx.fillStyle = `hsla(${p.hue}, 60%, 70%, 0.9)`;
+        this.ctx.beginPath();
+        this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        this.ctx.fill();
+      }
+
+      this.ctx.restore();
+    }
+
+    // Draw subtle connections
+    this._drawConnections();
+  }
+
+  _drawConnections() {
+    const threshold = 100;
+    for (let i = 0; i < this.particles.length; i++) {
+      for (let j = i + 1; j < this.particles.length; j++) {
+        const a  = this.particles[i];
+        const b  = this.particles[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < threshold) {
+          const strength = ((threshold - d) / threshold) * 0.06;
+          this.ctx.save();
+          this.ctx.globalAlpha = strength;
+          this.ctx.strokeStyle = `rgba(200, 151, 58, 0.8)`;
+          this.ctx.lineWidth   = 0.5;
+          this.ctx.beginPath();
+          this.ctx.moveTo(a.x, a.y);
+          this.ctx.lineTo(b.x, b.y);
+          this.ctx.stroke();
+          this.ctx.restore();
+        }
+      }
+    }
+  }
+}
+
+/* ─── 2. PARALLAX ────────────────────────────────────────────── */
+class Parallax {
+  constructor() {
+    this.bg      = document.querySelector('.hero__bg');
+    this.raf     = null;
+    this.tX      = 0;
+    this.tY      = 0;
+    this.cX      = 0;
+    this.cY      = 0;
+    this._onScroll    = this._onScroll.bind(this);
+    this._onMouseMove = this._onMouseMove.bind(this);
+  }
+
+  init() {
+    if (!this.bg) return;
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    document.addEventListener('mousemove', this._onMouseMove, { passive: true });
+    this._raf();
+  }
+
+  _onScroll() {
+    const y   = window.scrollY;
+    this.tY = y * 0.35;
+  }
+
+  _onMouseMove(e) {
+    const cx = window.innerWidth  / 2;
+    const cy = window.innerHeight / 2;
+    this.tX  = (e.clientX - cx) / cx * -12;
+    this.tY += (e.clientY - cy) / cy * -6;
+  }
+
+  _raf() {
+    requestAnimationFrame(() => {
+      this.cX += (this.tX - this.cX) * 0.05;
+      this.cY += (this.tY - this.cY) * 0.05;
+      if (this.bg) {
+        this.bg.style.transform = `translate(${this.cX * 0.4}px, ${-this.cY * 0.1}px) scale(1.12)`;
+      }
+      this._raf();
+    });
+  }
+}
+
+/* ─── 3. NAVBAR ──────────────────────────────────────────────── */
+class Navbar {
+  constructor() {
+    this.el          = document.querySelector('.navbar');
+    this.hamburger   = document.querySelector('.navbar__hamburger');
+    this.mobileMenu  = document.querySelector('.mobile-menu');
+    this.mobileLinks = document.querySelectorAll('.mobile-menu__link');
+    this.isOpen      = false;
+    this._onScroll   = this._onScroll.bind(this);
+  }
+
+  init() {
+    if (!this.el) return;
+
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+
+    this.hamburger?.addEventListener('click', () => this.toggleMenu());
+
+    this.mobileLinks.forEach(link => {
+      link.addEventListener('click', () => this.closeMenu());
+    });
+  }
+
+  _onScroll() {
+    if (window.scrollY > 80) {
+      this.el.classList.add('is-scrolled');
+    } else {
+      this.el.classList.remove('is-scrolled');
+    }
+  }
+
+  toggleMenu() {
+    this.isOpen ? this.closeMenu() : this.openMenu();
+  }
+
+  openMenu() {
+    this.isOpen = true;
+    this.mobileMenu?.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    const spans = this.hamburger?.querySelectorAll('span');
+    if (spans?.length === 3) {
+      spans[0].style.transform  = 'translateY(6.5px) rotate(45deg)';
+      spans[1].style.opacity    = '0';
+      spans[2].style.transform  = 'translateY(-6.5px) rotate(-45deg)';
+    }
+  }
+
+  closeMenu() {
+    this.isOpen = false;
+    this.mobileMenu?.classList.remove('is-open');
+    document.body.style.overflow = '';
+
+    const spans = this.hamburger?.querySelectorAll('span');
+    if (spans?.length === 3) {
+      spans[0].style.transform  = '';
+      spans[1].style.opacity    = '1';
+      spans[2].style.transform  = '';
+    }
+  }
+}
+
+/* ─── 4. SCROLL REVEAL ───────────────────────────────────────── */
+class ScrollReveal {
+  constructor() {
+    this.els = document.querySelectorAll('.reveal');
+    this.io  = null;
+  }
+
+  init() {
+    if (!this.els.length) return;
+
+    const options = { rootMargin: '-10% 0px', threshold: 0.05 };
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          this.io.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    this.els.forEach(el => this.io.observe(el));
+  }
+}
+
+/* ─── 5. COUNT UP ────────────────────────────────────────────── */
+class CountUp {
+  constructor() {
+    this.targets = document.querySelectorAll('[data-count]');
+    this.io      = null;
+    this.started = new Set();
+  }
+
+  init() {
+    if (!this.targets.length) return;
+
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.started.has(entry.target)) {
+          this.started.add(entry.target);
+          this._animate(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    this.targets.forEach(t => this.io.observe(t));
+  }
+
+  _animate(el) {
+    const target   = parseFloat(el.dataset.count);
+    const suffix   = el.dataset.suffix || '';
+    const duration = 1800;
+    const start    = performance.now();
+
+    const tick = (now) => {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased    = 1 - Math.pow(1 - progress, 3);   // ease-out-cubic
+      const value    = target * eased;
+
+      el.textContent = (Number.isInteger(target)
+        ? Math.round(value)
+        : value.toFixed(1)) + suffix;
+
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
+  }
+}
+
+/* ─── 6. TILT CARDS ──────────────────────────────────────────── */
+class TiltCards {
+  constructor(selector = '.service-card') {
+    this.cards    = document.querySelectorAll(selector);
+    this.strength = 12;
+  }
+
+  init() {
+    if (window.matchMedia('(pointer: coarse)').matches) return; // skip touch
+
+    this.cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => this._onMove(e, card));
+      card.addEventListener('mouseleave', ()   => this._onLeave(card));
+    });
+  }
+
+  _onMove(e, card) {
+    const rect   = card.getBoundingClientRect();
+    const cx     = rect.left + rect.width  / 2;
+    const cy     = rect.top  + rect.height / 2;
+    const dx     = (e.clientX - cx) / (rect.width  / 2);
+    const dy     = (e.clientY - cy) / (rect.height / 2);
+    const rotY   =  dx * this.strength;
+    const rotX   = -dy * this.strength;
+    const glareX = 50 + dx * 30;
+    const glareY = 50 + dy * 30;
+
+    card.style.transform  = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(8px)`;
+    card.style.transition = 'transform 0ms';
+    card.style.setProperty('--glare-x', `${glareX}%`);
+    card.style.setProperty('--glare-y', `${glareY}%`);
+  }
+
+  _onLeave(card) {
+    card.style.transform  = '';
+    card.style.transition = 'transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+  }
+}
+
+/* ─── 7. SCROLL PROGRESS ─────────────────────────────────────── */
+class ScrollProgress {
+  constructor() {
+    this.bar = document.querySelector('.scroll-progress');
+  }
+
+  init() {
+    if (!this.bar) return;
+    window.addEventListener('scroll', () => {
+      const docH  = document.documentElement.scrollHeight - window.innerHeight;
+      const pct   = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+      this.bar.style.width = pct + '%';
+    }, { passive: true });
+  }
+}
+
+/* ─── 8. SMOOTH SCROLL ───────────────────────────────────────── */
+class SmoothScroll {
+  init() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+  }
+}
+
+/* ─── 9. INIT ────────────────────────────────────────────────── */
+function init() {
+  // Particle system
+  const canvas = document.getElementById('hero-canvas');
+  if (canvas) {
+    const ps = new ParticleSystem(canvas);
+    ps.init();
+  }
+
+  new Parallax().init();
+  new Navbar().init();
+  new ScrollReveal().init();
+  new CountUp().init();
+  new TiltCards().init();
+  new ScrollProgress().init();
+  new SmoothScroll().init();
+
+  // Hero elements staggered entrance
+  setTimeout(() => {
+    document.querySelectorAll('.hero-anim').forEach((el, i) => {
+      setTimeout(() => {
+        el.style.opacity   = '1';
+        el.style.transform = 'translateY(0)';
+      }, i * 130);
+    });
+  }, 300);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+</script>
+</body>
+</html>
